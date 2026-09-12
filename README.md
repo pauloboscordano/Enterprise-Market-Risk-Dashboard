@@ -18,6 +18,8 @@ The dashboard is designed to help identify:
 
 ## Executive Risk Overview
 
+![Executive Risk Overview](images/executive-risk-overview.png.png)
+
 The main report page consolidates the following analytical blocks:
 
 | Area | Key metrics |
@@ -102,21 +104,15 @@ The dashboard currently shows **no active breaches**, while several indicators r
 
 ## Repository structure
 
-The repository is intended to contain:
-
 ```text
 Enterprise-Market-Risk-Dashboard/
 ├── README.md
 ├── dashboard/
 │   └── Enterprise_Market_Risk_Dashboard_FINAL.pbix
 └── images/
-    ├── executive-risk-overview.png
+    ├── executive-risk-overview.png.png
     └── data-model.png
 ```
-
-## Dashboard preview
-
-A screenshot of the final **Executive Risk Overview** will be included in the `images` folder.
 
 ## Notes
 
