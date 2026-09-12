@@ -53,7 +53,56 @@ The main report page consolidates the following analytical blocks:
 
 ## Data model
 
-The solution uses a primarily **star-schema approach**, with shared dimensions connected to specialized fact tables.
+The solution uses a primarily **star-schema approach**, with shared dimensions connected to specialized fact tables. The diagram below is a simplified view of the core analytical model used by the dashboard.
+
+```mermaid
+flowchart LR
+    DDATE[Dim_Date]
+    DPORT[Dim_Portfolio]
+    DINST[Dim_Instrument]
+    DCP[Dim_Counterparty]
+    DRF[Dim_RiskFactor]
+    DSS[Dim_StressScenario]
+
+    FRM[Fact_RiskMetrics]
+    FPNL[Fact_PositionPnL]
+    FLIM[Fact_LimitUsage]
+    FALT[Fact_RiskAlerts]
+    FRFE[Fact_RiskFactorExposure]
+    FCONC[Fact_RiskConcentrationMonthly]
+    FSTRESS[Fact_StressPortfolioHistory]
+    FPOS[Fact_Positions]
+    FTX[Fact_Transactions]
+
+    DDATE --> FRM
+    DDATE --> FPNL
+    DDATE --> FLIM
+    DDATE --> FALT
+    DDATE --> FRFE
+    DDATE --> FCONC
+    DDATE --> FSTRESS
+    DDATE --> FPOS
+    DDATE --> FTX
+
+    DPORT --> FRM
+    DPORT --> FPNL
+    DPORT --> FLIM
+    DPORT --> FALT
+    DPORT --> FRFE
+    DPORT --> FCONC
+    DPORT --> FSTRESS
+    DPORT --> FPOS
+    DPORT --> FTX
+
+    DINST --> FPNL
+    DINST --> FRFE
+    DINST --> FPOS
+    DINST --> FTX
+
+    DRF --> FRFE
+    DSS --> FSTRESS
+    DCP --> FTX
+```
 
 ### Main dimensions
 
@@ -110,8 +159,7 @@ Enterprise-Market-Risk-Dashboard/
 ├── dashboard/
 │   └── Enterprise_Market_Risk_Dashboard_FINAL.pbix
 └── images/
-    ├── executive-risk-overview.png.png
-    └── data-model.png
+    └── executive-risk-overview.png.png
 ```
 
 ## Notes
